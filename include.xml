@@ -3,4 +3,19 @@
 	
 	<ndll name="chartboostext" />
 	
+	<section if="ios">
+	
+	<dependency name="Chartboost" path="dependencies/iphone"/>
+	<dependency name="QuartzCore.framework"/>
+	<dependency name="SystemConfiguration.framework" />
+	
+	</section>
+	
+	<section if="android">
+		<dependency name="ruechartboost" path="dependencies/android"/>
+		<android extension="org.haxe.extension.cb.ChartboostConnect" />
+		<template path="dependencies/android/src/org/haxe/extension/cb/util/chartboost.jar" rename="deps/ruechartboost/libs/chartboost.jar"/>
+	
+	</section>
+	
 </project>

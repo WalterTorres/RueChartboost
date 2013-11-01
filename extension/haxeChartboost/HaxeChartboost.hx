@@ -15,84 +15,39 @@ import openfl.utils.JNI;
 @:allow(extension.haxeChartboost) class HaxeChartboost 
 {
 	private static var dispatcher = new EventDispatcher ();
-
-	public static function addEventListener (type:String, listener:Dynamic, useCapture:Bool = false, priority:Int = 0, useWeakReference:Bool = false):Void
-	{
-		dispatcher.addEventListener (type, listener, useCapture, priority, useWeakReference);
-	}
-
 	
-	public static function dispatchEvent (event:Event):Bool
+	static var ShowAdFunc;
+	public static function OpenIntersetial():Void
 	{
-		return dispatcher.dispatchEvent (event);
-	}
-
-	public static function hasEventListener (type:String):Bool 
-	{
-		return dispatcher.hasEventListener (type);
-	}
-
-	private static function notifyListeners (inEvent:Dynamic):Void 
-	{
-		#if ios
-		
-		var type = Std.string (Reflect.field (inEvent, "type"));
-		var data = Std.string (Reflect.field (inEvent, "data"));
-		
-		switch (type)
+		#if android
+		trace("ATTEMPTING TO CREATE FUNCTION FOR CHARTBOOST");
+		if (ShowAdFunc == null)
 		{
-
+			ShowAdFunc = JNI.createStaticMethod("org/haxe/extension/cb/ChartboostConnect", "ShowAd", "()V");
 		}
+		
+		Lib.postUICallback(function(){
+		ShowAdFunc(); } );
 		#end
-	}
-
-	private static function registerHandle ():Void
-	{
+		
 		#if ios
-		set_event_handle (notifyListeners);
+		trace("ATTEMPTING TO OPEN AD FOR CHARTBOOST");
+		
+		Lib.postUICallback(function(){
+		cb_show_interstitial(); } );
 		#end
 	}
 	
-
-	public static function removeEventListener (type:String, listener:Dynamic, capture:Bool = false):Void
+	#if ios
+	public static function init(appID:String, appSignature:String)
 	{
-		dispatcher.removeEventListener (type, listener, capture);
+		cb_init(appID, appSignature);
+		isInit = true;
 	}
-	
-	
-	
-	
-	
-	
-	// Native Methods
-	
-	
-	
-	
-	#if android
-	
-	
-	
-	#elseif ios
-	
 
+	static var cb_init               = nme.Loader.load("cb_setup",2);
+	static var cb_show_interstitial  = nme.Loader.load("cb_show_interstitial", 0);
+	
 	#end
 	
-	
 }
-
-
-#if (android && !display)
-
-
-private class CBHandler 
-{
-	
-	public function new () 
-	{
-
-	}
-
-}
-
-#end

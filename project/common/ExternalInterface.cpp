@@ -8,21 +8,36 @@
 
 
 #include <hx/CFFI.h>
-#include "Utils.h"
+#include "cb.h"
 
 
 using namespace chartboostext;
 
+#ifdef IPHONE
 
-
-static value chartboostext_sample_method (value inputValue) {
-	
-	int returnValue = SampleMethod(val_int(inputValue));
-	return alloc_int(returnValue);
-	
+value cb_init(value id, value appSignature)
+{
+    cbInit(val_string(id), val_string(appSignature));
+    return alloc_null();
 }
-DEFINE_PRIM (chartboostext_sample_method, 1);
+DEFINE_PRIM(cb_init, 2);
 
+
+value cb_show_interstitial()
+{
+    cbShowInterstitial();
+    return alloc_null();
+}
+DEFINE_PRIM(cb_show_interstitial, 0);
+
+value cb_show_more_apps(){
+        
+        cbShowMoreApps();
+        return alloc_null();
+}
+DEFINE_PRIM(cb_show_more_apps, 0);
+
+#endif
 
 
 extern "C" void chartboostext_main () {

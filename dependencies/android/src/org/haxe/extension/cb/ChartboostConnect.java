@@ -12,74 +12,71 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import org.haxe.extension.cb.util.com.chartboost.sdk.*;
+import com.chartboost.sdk.*;
 import org.haxe.extension.Extension;
 import org.haxe.nme.HaxeObject;
 
 
 public class ChartboostConnect extends Extension 
 {
-	private static String appID = "";
-	private static String appSignature = "";
+	private static String appID = "5273ce8c17ba472c3700000d";
+	private static String appSignature = "46d89ebcdb850677c37544ed1f134d070257820b";
 	
 	private static Chartboost cb;
-
-	public static void initialize (String publicKey, HaxeObject callback)
-	{
-
-	}
 	
-	@override public void onCreate (Bundle savedInstanceState)
+	@Override public void onCreate (Bundle savedInstanceState)
 	{
+		Log.e("ChartboostConnect", "CREATING CHARTBOOST SERVICE");
 		ChartboostConnect.cb = Chartboost.sharedChartboost();
 		ChartboostConnect.cb.onCreate(Extension.mainActivity, ChartboostConnect.appID, ChartboostConnect.appSignature, null);
+		//ChartboostConnect.cb.startSession();
 	}
 	
 	
-	@Override public boolean onActivityResult (int requestCode, int resultCode, Intent data)
-	{
-		return super.onActivityResult (requestCode, resultCode, data);
-	}
+	//@Override public boolean onActivityResult (int requestCode, int resultCode, Intent data)
+	//{
+		//return super.onActivityResult (requestCode, resultCode, data);
+	//}
 	
-	
-	@Override public void onDestroy () 
+	@Override public void onStart()
 	{
-		
-	}
-	
-	@Override
-	protected void onStart()
-	{
+		Log.e("ChartboostConnect", "STARTING CHARTBOOST");
 		ChartboostConnect.cb.onStart(Extension.mainActivity);
 	
 		// Notify the beginning of a user session. Must not be dependent on user actions or any prior network requests.
 		ChartboostConnect.cb.startSession();
-	
-		// Show an interstitial
-		ChartboostConnect.cb.showInterstitial(); 
+		
+		// ChartboostConnect.cb.showInterstitial(); 
 	}   
 	
-	@Override
-	protected void onStop() 
+	@Override public void onStop() 
 	{
-		this.cb.onStop(this);
+		Log.e("ChartboostConnect", "STOPPING CHARTBOOST");
+		ChartboostConnect.cb.onBackPressed();
+		ChartboostConnect.cb.onStop(Extension.mainActivity);
 	}
 	
-	@Override
-	protected void onDestroy() 
+	@Override public void onDestroy() 
 	{
-		this.cb.onDestroy(this);
+		ChartboostConnect.cb.onDestroy(Extension.mainActivity);
 	}
 	
-	@Override
-	public void onBackPressed()
+	public static void ShowAd()
 	{
-		// If an interstitial is on screen, close it. Otherwise continue as normal.
-		if (this.cb.onBackPressed())
+		if(ChartboostConnect.cb != null)
 		{
-			return;
+			if(ChartboostConnect.cb.onBackPressed())
+			{
+				ChartboostConnect.cb.showInterstitial(); 
+			}
+			else
+			{
+				ChartboostConnect.cb.showInterstitial(); 
+			}
 		}
+		
 	}
+	
 	
 	
 

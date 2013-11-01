@@ -7,13 +7,10 @@
 	<set name="mobile" value="1" if="blackberry"/>
 	<set name="mobile" value="1" if="webos"/>
 	
+	
 	<files id="common">
-		
 		<compilerflag value="-Iinclude"/>
-		
 		<file name="common/ExternalInterface.cpp"/>
-		<file name="common/ChartboostExt.cpp"/>
-		
 	</files>
 	
 	<files id="iphone">
@@ -22,6 +19,7 @@
 		<compilerflag value="-Iinclude"/>
 		
 		<file name="iphone/ChartboostLink.mm"/>
+	
 		
 	</files>
 	
