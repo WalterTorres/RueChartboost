@@ -40,7 +40,6 @@ import openfl.utils.JNI;
 	public static function init(appID:String, appSignature:String)
 	{
 		cb_init(appID, appSignature);
-		isInit = true;
 	}
 
 	static var cb_init               = Lib.load("ruechartboost","cb_setup",2);
