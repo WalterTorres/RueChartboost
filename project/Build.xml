@@ -18,7 +18,7 @@
 		<compilerflag value="-IiPhone/include"/>
 		<compilerflag value="-Iinclude"/>
 		
-		<file name="iphone/ChartboostLink.mm"/>
+		<file name="iphone/Ruechartboost.mm"/>
 	
 		
 	</files>
@@ -36,7 +36,7 @@
 	<set name="SLIBEXT" value=".a" unless="windows"/>
 	<set name="SLIBEXT" value=".so" if="webos"/>
 	
-	<target id="NDLL" output="${name_prefix}chartboostext${debug_extra}${name_extra}" tool="linker" toolid="${ndll-tool}">
+	<target id="NDLL" output="${name_prefix}ruechartboost${debug_extra}${name_extra}" tool="linker" toolid="${ndll-tool}">
 		
 		<outdir name="../ndll/${BINDIR}"/>
 		<ext value=".ndll" unless="mobile"/>

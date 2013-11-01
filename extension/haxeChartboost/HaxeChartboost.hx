@@ -14,8 +14,6 @@ import openfl.utils.JNI;
 
 @:allow(extension.haxeChartboost) class HaxeChartboost 
 {
-	private static var dispatcher = new EventDispatcher ();
-	
 	static var ShowAdFunc;
 	public static function OpenIntersetial():Void
 	{
@@ -45,8 +43,8 @@ import openfl.utils.JNI;
 		isInit = true;
 	}
 
-	static var cb_init               = nme.Loader.load("cb_setup",2);
-	static var cb_show_interstitial  = nme.Loader.load("cb_show_interstitial", 0);
+	static var cb_init               = Lib.load("ruechartboost","cb_setup",2);
+	static var cb_show_interstitial  = Lib.load("ruechartboost","cb_show_interstitial", 0);
 	
 	#end
 	

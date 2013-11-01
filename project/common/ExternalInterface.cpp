@@ -11,7 +11,7 @@
 #include "cb.h"
 
 
-using namespace chartboostext;
+using namespace ruechartboost;
 
 #ifdef IPHONE
 
@@ -40,13 +40,13 @@ DEFINE_PRIM(cb_show_more_apps, 0);
 #endif
 
 
-extern "C" void chartboostext_main () {
+extern "C" void ruechartboost_main () {
 	
 	val_int(0); // Fix Neko init
 	
 }
-DEFINE_ENTRY_POINT (chartboostext_main);
+DEFINE_ENTRY_POINT (ruechartboost_main);
 
 
 
-extern "C" int chartboostext_register_prims () { return 0; }
+extern "C" int ruechartboost_register_prims () { return 0; }

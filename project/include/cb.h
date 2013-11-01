@@ -2,7 +2,7 @@
 #define CHARTBOOSTEXT_H
 
 
-namespace chartboostext
+namespace ruechartboost
 {
 	void cbInit(const char *appId, const char *appSignature);
     void cbCacheInterstitial();
