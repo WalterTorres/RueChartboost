@@ -22,7 +22,7 @@ import motion.easing.Quart;
 import motion.easing.Quint;
 import motion.easing.Sine;
 
-#if android
+#if (android || ios)
 
 import extension.haxeChartboost.HaxeChartboost;
 
