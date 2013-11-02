@@ -6,6 +6,7 @@
 		<dependency name= "libChartboost.a" />
 		<dependency name="QuartzCore.framework"/>
 		<dependency name="SystemConfiguration.framework" />
+		<dependency name="AdSupport.framework" />
 	</section>
 	
 	<section if="android">
