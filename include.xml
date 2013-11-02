@@ -4,6 +4,7 @@
 	<ndll name="ruechartboost" />
 	
 	<section if="ios">
+		<ios linker-flags="-force_load project/include/libChartboost.a" />
 		<dependency name="QuartzCore.framework"/>
 		<dependency name="SystemConfiguration.framework" />
 	</section>
