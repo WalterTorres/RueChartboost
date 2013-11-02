@@ -14,7 +14,10 @@ import openfl.utils.JNI;
 
 @:allow(extension.haxeChartboost) class HaxeChartboost 
 {
+	#if android
 	static var ShowAdFunc;
+	#end
+	
 	public static function OpenIntersetial():Void
 	{
 		#if android
@@ -34,15 +37,24 @@ import openfl.utils.JNI;
 		#end
 	}
 	
-	#if ios
+	
 	public static function init(appID:String, appSignature:String)
 	{
+		#if ios
+		//"::ENV_ChartboostID::"
 		cb_init(appID, appSignature);
+		#end
+		
+		#if android
+		
+		#end
 	}
 
+	
+	#if ios
 	static var cb_init               = Lib.load("ruechartboost","cb_init",2);
 	static var cb_show_interstitial  = Lib.load("ruechartboost","cb_show_interstitial", 0);
-	
 	#end
+	
 	
 }

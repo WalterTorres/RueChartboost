@@ -18,8 +18,8 @@ void cbInit(const char *appId, const char *appSignature)
 		NSString *appid = [[NSString alloc] initWithUTF8String:appId];
 		NSString *signature = [[NSString alloc] initWithUTF8String:appSignature];
 		NSLog(@"2");
-	    [Chartboost sharedChartboost].appId = appid;//@"4ff50945f87659a74e000000";
-	    [Chartboost sharedChartboost].appSignature = signature;//@"1e6521dafd3cba0429a7bd7f9928214fbbea288f";
+	    [Chartboost sharedChartboost].appId = appid;
+	    [Chartboost sharedChartboost].appSignature = signature;
 		NSLog(@"3");
 	    [[Chartboost sharedChartboost] startSession];
 		NSLog(@"5");
