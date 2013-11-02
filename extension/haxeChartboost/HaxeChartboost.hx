@@ -30,9 +30,7 @@ import openfl.utils.JNI;
 		
 		#if ios
 		trace("ATTEMPTING TO OPEN AD FOR CHARTBOOST");
-		
-		Lib.postUICallback(function(){
-		cb_show_interstitial(); } );
+		cb_show_interstitial();
 		#end
 	}
 	
@@ -42,7 +40,7 @@ import openfl.utils.JNI;
 		cb_init(appID, appSignature);
 	}
 
-	static var cb_init               = Lib.load("ruechartboost","cb_setup",2);
+	static var cb_init               = Lib.load("ruechartboost","cb_init",2);
 	static var cb_show_interstitial  = Lib.load("ruechartboost","cb_show_interstitial", 0);
 	
 	#end
