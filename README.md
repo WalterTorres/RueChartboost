@@ -62,8 +62,10 @@ class Main extends Sprite
 
 Android does not require an in code initialization, but instead you are required to add the app id and the app signature from your chartboost campaign into your project.xml, like this:
 
+```java
 <setenv name="ChartboostID" name="your chartboost app id here" if="android" />
 
 <setenv name="ChartboostSignature" name="your chartboost app signature here" if="android" />
+```
 
 The rest is handled internally through OpenFL's new extension API.
